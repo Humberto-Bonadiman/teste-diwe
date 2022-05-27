@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+# Boas vindas ao repositório do projeto Teste Diwe!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descrição do projeto
 
-## Available Scripts
+O desafio consistiu na criação de uma aplicação web para gerenciamento de uma lista de contatos. Nesta aplicação eu deveria pegar os dados de uma API onde eu poderia visualizar os dados dos contatos, selecionar um contato, criar contato, editar contato e deletar contato.
+O layout tem como foco aplicações web e dispositivos móveis.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Instalação do projeto localmente
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Após cada um dos passos, haverá um exemplo do comando a ser digitado para fazer o que está sendo pedido.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Abra o terminal e crie um diretório no local de sua preferência com o comando **mkdir**:
+```javascript
+  mkdir projeto-humberto
+```
 
-### `npm test`
+2. Entre no diretório que acabou de criar e depois clone o projeto:
+```javascript
+  cd projeto-humberto
+  git clone git@github.com:Humberto-Bonadiman/teste-diwe.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Acesse o diretório do projeto e depois utilize o comando **npm i** para instalar todas as dependências necessárias:
+```javascript
+  cd teste-diwe
+  npm install
+```
 
-### `npm run build`
+4. Por último, rode o comando **npm start** e acesse o projeto via browser, no caminho `http://localhost:3000/`.
+```javascript
+  npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Requisitos do projeto
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Login
 
-### `npm run eject`
+### 1 - Adicionar os textos descritos abaixo na página de login para mobile
+```javascript
+Bem-vindo! É hora de começar  uma nova experiência
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```javascript
+Para ter acesso a todas as funcionalidades que podemos oferecer, faça login ou crie uma nova conta.
+```
+### 2 - Adicionar a imagem abaixo acima do texto
+![Secure_login-amico_1](Secure_login-amico_1.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3 - Adicionar botão que direciona para a página de verificação de dados do login com texto **Começar**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 4 - Adicionar os textos descritos abaixo na verificação de dados do login
+```javascript
+Bem-vindo(a)!
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```javascript
+Faça login para acessar nossa plataforma
+```
+### 5 - Crie dois inputs, um para o email, onde deverá ser adicionado um email válido, e um para a senha
 
-## Learn More
+### 6 - Adicione um botão com texto **Entrar** que irá verficar na API se os dados digitados nos inputs são válidos. Caso algum dos dados não saja válido, retornar uma mensagem de erro.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 7 - Criar a aplicação web da página de login com a imagem do requisito 2, os textos do requisito 4, os inputs do requisito 5 e o botão do requisito 6 (obs.: neste botão o texto é **Fazer Login**.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 8 - Realizar testes para a página de login
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Listagem dos contatos
 
-### Analyzing the Bundle Size
+### 9 - Criar um header fixo que mostre que indique a página que a pessoa se encontra e com link com a opção para voltar a página anterior
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 10 - Adicionar um botão para cadastrar usuário com o texto **Cadastrar Contato**
 
-### Making a Progressive Web App
+### 11 - Ao clicar no botão de cadastrar contato, encaminhar o usuário para a página de cadastrar contato
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 12 - Adicionar um span onde é possível ver o total de pessoas cadastradas com o texto **Total: x usuários**, onde x é o número de usuários.
 
-### Advanced Configuration
+### 13 - Adicionar um link com o texto **Ver todos** onde é possível visualizar todos os contatos.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 14 - Criar um card que mostre as informações do usuário (nome, email, número de telefone), e que tenha dois botões um com o texto **Editar** e outro com o ícone de uma lixeira.
 
-### Deployment
+### 15 - Ao clicar no botão de Editar, encaminhe o usuário para a página de atualizar contato.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 16 - Ao clicar no botão com ícone de uma lixeira, mostrar um alerta perguntando se o usuário quer realmente apagar o contato.
 
-### `npm run build` fails to minify
+## Aplicação Web
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 17 - Ao invés de mostrar a página que a pessoa se encontra, mostrar um texto escrito **voltar**
+
+### 18 - Adicionar um h2 com o texto **Listagem de contatos**
+
+### 19 - O botão do requisito 10 agora deve conter o texto **Adicionar novo contato**
+
+### 20 - Criar uma tabela com **#** onde estarão os ids, **Nome** com os nomes dos contatos, **Celular** com os números dos contatos, **Email** com o email dos contatos e **Ações** onde é possível editar e deletar os contatos.
+Obs.: nos botões de Editar e Excluir, estes devem ter os icones ao seu lado conforme o figma
+
+### 21 - Realizar testes para a página de listagem dos contatos
+
+---
+
+## Cadastrar contatos
+
+### 22 - Adicionar header com o texto **Cadastrar um novo contato** e com botão para voltar
+
+### 23 - Adicionar um paragraph com texto **Preencha as informações para cadastrar um novo contato**
+
+### 24 - Criar os inputs com para adicionar nome, email e celular
+
+### 25 - Criar um botão com o texto **Cadastrar contato**
+
+### 26 - Ao clicar no botão, adicionar o contato ao banco de dados e voltar para a página de listagem de contatos
+
+### 27 - Ao criar um contato mostrar um ícone de Check e o texto **Contato cadastrado com sucesso!** no lugar do header por 5 segundos na página de listagem de contatos
+
+### 28 - Realizar os testes para a página de cadastrar contatos
+
+---
+
+## Atualizar contatos
