@@ -35,6 +35,15 @@ Após cada um dos passos, haverá um exemplo do comando a ser digitado para faze
 
 ---
 
+## Referências
+
+- [API](https://contacts-api.prd.parceirodaconstrucao.com.br/)
+- [Figma](https://www.figma.com/file/MlDF7BP1BgodRv0BO4EQ4C/Desafio)
+- [Ícones](https://feathericons.com/)
+- [Tipografia - Montserrat](https://fonts.google.com/specimen/Montserrat?query=mont)
+
+---
+
 ## Requisitos do projeto
 
 ## Login
@@ -122,3 +131,26 @@ Obs.: nos botões de Editar e Excluir, estes devem ter os icones ao seu lado con
 ---
 
 ## Atualizar contatos
+
+### 29 - Adicionar header com o texto **Atualizar contato** e com botão para voltar
+
+### 30 - Adicionar um paragraph com o texto **Faça as alterções necessárias e ao terminar salve seu contato**
+
+### 31 - Criar os inputs com para alterar o Nome Completo, Email e Celular
+Obs.: Os inputs já devem estar preenchidos com os dados do contato selecionado
+
+### 32 - Criar um botão com o texto **Salvar alterações**
+
+### 33 - Ao atualizar um contato mostrar um ícone de Check e o texto **Contato atualizado com sucesso!** no lugar do header por 5 segundos na página de listagem de contatos
+
+### 34 - Realizar os testes para a página de atualizar contatos
+
+## Deletar contatos
+
+### 35 - Após clicar no ícone com a lixeira, deve aparecer um alerta
+
+### 36 - O alerta deve conter dois textos, no primeiro deve conter **Tem certeza que deseja excluir este contato?**, e no segundo deve conter **Após excluir, não será possivel recuperar o contato.**
+
+### 37 - Criar dois botões dentro do alerta onde um exclui os dados do contato e retorna para a página de listagem de contatos, e o outro em que retorna para a página de listagem de contatos
+
+### 38 - Realizar os testes para de deleção de contatos
