@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-import Computer from '../images/Login.png';
-import Header from './Header';
 import fetchPostLogin from '../services/fetchApi';
-import '../styles/startLogin.css';
+import Computer from '../images/Login.png';
 
-function StartLogin() {
-  const [start, setStart] = useState(true);
+function LoginWeb() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
   const MIN_LENGTH = 6;
-  const text = 'Login';
-  const link = '/';
 
   const isEmailValid = (userEmail) => {
     const regexEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -32,25 +27,13 @@ function StartLogin() {
     }
   };
 
-  const firstVision = (
-    <div>
-      <img src={ Computer } alt="Imagem com pessoa utilizando o computador"/>
-      <p>Bem-vindo! É hora de começar uma nova experiência</p>
-      <p>
-        Para ter acesso a todas as funcionalidades que podemos oferecer, faça
-        login ou crie uma nova conta.
-      </p>
-      <button type="button" onClick={ () => setStart(false) }>Começar</button>
-    </div>
-  );
-
   const alert = (
     <p>Email ou senha incorretos</p>
   );
 
-  const secondVision = (
+  return (
     <div>
-      <Header text={ text } link={ link } />
+      <img src={ Computer } alt="Imagem com pessoa utilizando o computador"/>
       <p>Bem-vindo(a)!</p>
       <p>Faça login para acessar nossa plataforma</p>
       <form>
@@ -85,18 +68,11 @@ function StartLogin() {
           onClick={ handleClick }
           disabled={ !(isEmailValid(email) && password.length >= MIN_LENGTH) }
         >
-          Entrar
+          Fazer login
         </button>
       </form>
     </div>
   );
+};
 
-  return (
-    <>
-      { start && firstVision }
-      { !start && secondVision }
-    </>
-  );
-}
-
-export default StartLogin;
+export default LoginWeb;
