@@ -28,14 +28,18 @@ function LoginWeb() {
   };
 
   const alert = (
-    <p>Email ou senha incorretos</p>
+    <p className="alert">Email ou senha incorretos</p>
   );
 
   return (
     <div>
-      <img src={ Computer } alt="Imagem com pessoa utilizando o computador"/>
-      <p>Bem-vindo(a)!</p>
-      <p>Faça login para acessar nossa plataforma</p>
+      <img
+        data-testid="image-login"
+        src={ Computer }
+        alt="Imagem com pessoa utilizando o computador"
+      />
+      <p className="welcome">Bem-vindo(a)!</p>
+      <p className="make-login-text">Faça login para acessar nossa plataforma</p>
       <form>
         <label htmlFor="email">
           Email
@@ -43,6 +47,7 @@ function LoginWeb() {
           <input
             type="text"
             id="email"
+            data-testid="email-input"
             placeholder="Digite seu email"
             onChange={ (e) => setEmail(e.target.value) }
           />
@@ -54,6 +59,7 @@ function LoginWeb() {
           <input
             type="password"
             id="password"
+            data-testid="password-input"
             placeholder="Digite sua senha"
             className="password-input"
             onChange={ (e) => setPassword(e.target.value) }

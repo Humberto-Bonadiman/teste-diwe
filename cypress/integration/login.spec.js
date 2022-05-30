@@ -31,4 +31,17 @@ describe('Testar a página de login', () => {
     cy.get('[data-testid="login-submit-btn"]').click();
     cy.get('.alert').should('have.text', 'Email ou senha incorretos');
   });
+
+  it('Verificar se a página web contém os dados corretos', () => {
+    cy.visit('http://localhost:3000/login');
+    cy.get('.welcome').should('have.text', 'Bem-vindo(a)!');
+    cy.get('.make-login-text').should('have.text', makeLogin);
+    cy.get('[data-testid="email-input"]').type('email@mail.com');
+    cy.get('[data-testid="email-input"]').should('have.value', 'email@mail.com');
+    cy.get('[data-testid="password-input"]').type('1234567');
+    cy.get('[data-testid="password-input"]').should('have.value', '1234567');
+    cy.get('.alert').should('not.exist');
+    cy.get('[data-testid="login-submit-btn"]').click();
+    cy.get('.alert').should('have.text', 'Email ou senha incorretos');
+  });
 });
