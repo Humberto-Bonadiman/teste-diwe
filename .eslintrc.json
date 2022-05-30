@@ -4,30 +4,21 @@
         "es2021": true
     },
     "extends": [
-        "standard",
-        "eslint:recommended",
-        "plugin:prettier/recommended",
+        "plugin:react/recommended",
+        "airbnb",
         "prettier"
     ],
-    "parser": "@babel/eslint-parser",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
         "ecmaVersion": "latest",
-        "sourceType": "module",
-        "requireConfigFile": false
+        "sourceType": "module"
     },
     "plugins": [
         "react"
     ],
     "rules": {
-        "prettier/prettier": "warn",
-        "react/jsx-filename-extension": [
-            "warn",
-            {"extensions": [".js", ".jsx"]}
-        ],
-        "import/prefer-default-export": "off",
-        "jsx-quotes": ["warn", "prefer-single"]
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     }
 }
