@@ -34,25 +34,35 @@ function StartLogin() {
 
   const firstVision = (
     <div>
-      <img src={ Computer } alt="Imagem com pessoa utilizando o computador"/>
-      <p>Bem-vindo! É hora de começar uma nova experiência</p>
-      <p>
+      <img
+        data-testid="image-login"
+        src={ Computer }
+        alt="Imagem com pessoa utilizando o computador"
+      />
+      <p className="welcome-text">Bem-vindo! É hora de começar uma nova experiência</p>
+      <p className="before-login">
         Para ter acesso a todas as funcionalidades que podemos oferecer, faça
         login ou crie uma nova conta.
       </p>
-      <button type="button" onClick={ () => setStart(false) }>Começar</button>
+      <button
+        type="button"
+        className="button-start"
+        onClick={ () => setStart(false) }
+      >
+        Começar
+      </button>
     </div>
   );
 
   const alert = (
-    <p>Email ou senha incorretos</p>
+    <p className="alert">Email ou senha incorretos</p>
   );
 
   const secondVision = (
     <div>
       <Header text={ text } link={ link } />
-      <p>Bem-vindo(a)!</p>
-      <p>Faça login para acessar nossa plataforma</p>
+      <p className="welcome">Bem-vindo(a)!</p>
+      <p className="make-login-text">Faça login para acessar nossa plataforma</p>
       <form>
         <label htmlFor="email">
           Email
@@ -60,6 +70,7 @@ function StartLogin() {
           <input
             type="text"
             id="email"
+            data-testid="email-input"
             placeholder="Digite seu email"
             onChange={ (e) => setEmail(e.target.value) }
           />
@@ -71,6 +82,7 @@ function StartLogin() {
           <input
             type="password"
             id="password"
+            data-testid="password-input"
             placeholder="Digite sua senha"
             className="password-input"
             onChange={ (e) => setPassword(e.target.value) }
