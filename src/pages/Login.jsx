@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import LoginWeb from '../components/LoginWeb';
-import StartLogin from '../components/StartLogin';
+import LoginMobile from '../components/LoginMobile';
 
 function Login() {
   const [isGreaterThan600px, setIsGreaterThan600px] = useState(false);
@@ -23,7 +23,7 @@ function Login() {
 
   return (
     <div>
-      { !isGreaterThan600px && <StartLogin /> }
+      { !isGreaterThan600px && <LoginMobile /> }
       { isGreaterThan600px && <LoginWeb /> }
     </div>
   );

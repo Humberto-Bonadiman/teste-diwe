@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Computer from '../images/Login.png';
 import Header from './Header';
 import fetchPostLogin from '../services/fetchApi';
@@ -9,6 +10,7 @@ function StartLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
   const MIN_LENGTH = 6;
   const text = 'Login';
   const link = '/';
@@ -27,8 +29,8 @@ function StartLogin() {
       setTimeout(() => { setError(false) }, 5000);
     } else {
       const body = await result.json();
-      console.log(body);
       localStorage.setItem('user', JSON.stringify(body));
+      navigate('/contacts');
     }
   };
 
