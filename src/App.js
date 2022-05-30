@@ -1,8 +1,6 @@
-import React from 'react';
-import AppRoutes from './routes/AppRoutes';
 import './App.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import ContactsProvider from './context/ContactsProvider';
+import AppRoutes from './routes/AppRoutes';
 
 function App() {
   return (
@@ -10,6 +8,6 @@ function App() {
       <AppRoutes />
     </ContactsProvider>
   );
-}
+};
 
 export default App;

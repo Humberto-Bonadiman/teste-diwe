@@ -56,10 +56,8 @@ Bem-vindo! É hora de começar  uma nova experiência
 ```javascript
 Para ter acesso a todas as funcionalidades que podemos oferecer, faça login ou crie uma nova conta.
 ```
-### 2 - Adicionar a imagem mostrada abaixo
-
-Obs.: Ela deve ficar acima do texto do requisito 1
-![Secure_login-amico_1](src/images/Login.png)
+### 2 - Adicionar a imagem abaixo acima do texto
+![Secure_login-amico_1](Secure_login-amico_1.png)
 
 ### 3 - Adicionar botão que direciona para a página de verificação de dados do login com texto **Começar**
 

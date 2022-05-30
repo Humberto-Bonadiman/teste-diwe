@@ -1,28 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Navigate, useRoutes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import Login from '../pages/Login';
 import Contacts from '../pages/Contacts';
 import CreateContact from '../pages/CreateContact';
 import UpdateContact from '../pages/UpdateContact';
 
-const App = () => {
-  const routes = useRoutes([
-    { path: '/', element: <Navigate to='/login' /> },
-    { path: '/login', element: <Login /> },
-    { path: '/contacts', element: <Contacts /> },
-    { path: '/create', element: <CreateContact /> },
-    { path: '/update/:id', element: <UpdateContact /> }
-  ]);
-  return routes;
-};
-
-function AppRoutes() {
-  return (
-    <Router>
-      <App />
-    </Router>
-  );
-};
-
+const AppRoutes = () => (
+  <Routes>
+    <Route path="/" element={ <Navigate to="/login" /> } />
+    <Route exact path="/login" element={ <Login /> } />
+    <Route exact path="/contacts" element={ <Contacts /> } />
+    <Route exact path="/create" element={ <CreateContact /> } />
+    <Route exact path="/update/:id" element={ <UpdateContact />} />
+  </Routes>
+);
 
 export default AppRoutes;
