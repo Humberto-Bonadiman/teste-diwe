@@ -1,0 +1,83 @@
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import ContactsContext from '../context/ContactsContext';
+import Header from './Header';
+import fetch from '../services/fetchApi';
+import Delete from '../images/trash-2.svg';
+import Mobile from '../images/smartphone.svg';
+
+function ContactsMobile() {
+  const navigate = useNavigate();
+  const [contacts, setContacts] = useState([]);
+  const { setUserToken } = useContext(ContactsContext);
+  const text = 'Listagem de usuários';
+  const link = '/';
+
+  const navigateToCreateUser = () => {
+    navigate('/create');
+  };
+
+  const getAllContacts = async (token) => {
+    const response = await fetch.fetchGetAllContacts(token);
+    const data = await response.json();
+    setContacts(data);
+  };
+
+  useEffect(() => {
+    const dataStorage = JSON.parse(localStorage.getItem('user'));
+    if (dataStorage) {
+      const { token, type } = dataStorage;
+      setUserToken({ token, type });
+      getAllContacts(token);
+    };
+  }, []);
+
+  const numberContacs = contacts.length;
+
+  const numberMobile = (mobile) => {
+    const ddd = mobile.substring(0, 2);
+    const firstPart = mobile.substring(2,7);
+    const secondPart = mobile.substring(7);
+    const joinNumbers = `(${ddd}) ${firstPart}-${secondPart}`;
+    return joinNumbers;
+  };
+
+  const imageMobile = (
+    <img src={Mobile} alt="pequeno smartphone" />
+  );
+
+  return (
+    <div>
+      <Header text={ text } link={ link } />
+      <button
+        type="button"
+        data-testid="redirect-button"
+        className="redirect-button"
+        onClick={ navigateToCreateUser }
+      >
+        Cadastrar contato
+      </button>
+      <p>{`Total: ${numberContacs} usuários`}</p>
+      <Link to='/contacts'>Ver todos</Link>
+      { contacts.map((contact) => (
+        <div className="card">
+          <div className="card-left">
+            <p>{contact.name}</p>
+            <p>{contact.email}</p>
+            <p>{`${imageMobile} ${numberMobile(contact.mobile)}`}</p>
+          </div>
+          <div className="card-right">
+            <Link to={ `/update/${contact.id}` }>
+              Editar
+            </Link>
+            <button type="button">
+              <img src={ Delete } alt="botão para excluir usuário"/>
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default ContactsMobile;
