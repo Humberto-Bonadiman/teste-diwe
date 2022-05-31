@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ContactsContext from './ContactsContext';
 
 function ContactsProvider({ children }) {
-  const context = React.useMemo(() => ({}), []);
+  const [userToken, setUserToken] = useState({
+    token: '',
+    type: ''
+  });
+  const context = React.useMemo(() => ({
+    userToken,
+    setUserToken,
+  }), []);
 
   return (
     <ContactsContext.Provider value={ context }>

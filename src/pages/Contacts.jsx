@@ -1,8 +1,9 @@
 import React from 'react';
+import ContactsWeb from '../components/ContactsWeb';
 
 function Contacts() {
   return (
-    <div>Contacts</div>
+    <ContactsWeb />
   );
 };
 
