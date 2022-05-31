@@ -27,30 +27,75 @@ const fetchGetAllContacts = async (token) => {
   });
   const response = await fetchContacts;
   return response;
-}
+};
 
-/* export const fetchApiCreateOrder = async (order, token) => {
-  const fetchCreateOrder = fetch(`http://${URL}:${PORT}/customer/orders`, {
+const fetchGetContactById = async (id, token) => {
+  const fetchContacts = fetch(`https://contacts-api.prd.parceirodaconstrucao.com.br/contacts${id}`, {
+    method: 'GET',
+    headers: {
+      Accept: appJson,
+      'Content-Type': appJson,
+      'Authorization': `Bearer ${token}`,
+    }
+  });
+  const response = await fetchContacts;
+  return response;
+};
+
+const fetchCreateContact = async (token, name, email, mobile) => {
+  const fetchContacts = fetch('https://contacts-api.prd.parceirodaconstrucao.com.br/contacts', {
     method: 'POST',
     headers: {
       Accept: appJson,
       'Content-Type': appJson,
-      Authorization: token,
+      'Authorization': `Bearer ${token}`,
     },
     body: JSON.stringify({
-      user_id: order.userId,
-      seller_id: order.sellerId,
-      total_price: order.totalPrice,
-      delivery_address: order.deliveryAddress,
-      delivery_number: order.deliveryNumber,
-      status: order.status,
+      name,
+      email,
+      mobile,
     }),
   });
-  const response = await fetchCreateOrder;
+  const response = await fetchContacts;
   return response;
-}; */
+};
+
+const fetchUpdateContactById = async (id, token, name, email, mobile) => {
+  const fetchContacts = fetch(`https://contacts-api.prd.parceirodaconstrucao.com.br/contacts${id}`, {
+    method: 'PUT',
+    headers: {
+      Accept: appJson,
+      'Content-Type': appJson,
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      email,
+      mobile,
+    }),
+  });
+  const response = await fetchContacts;
+  return response;
+};
+
+const fetchDeleteContactById = async (id, token) => {
+  const fetchContacts = fetch(`https://contacts-api.prd.parceirodaconstrucao.com.br/contacts${id}`, {
+    method: 'DELETE',
+    headers: {
+      Accept: appJson,
+      'Content-Type': appJson,
+      'Authorization': `Bearer ${token}`,
+    }
+  });
+  const response = await fetchContacts;
+  return response;
+};
 
 export default {
   fetchPostLogin,
   fetchGetAllContacts,
+  fetchGetContactById,
+  fetchCreateContact,
+  fetchUpdateContactById,
+  fetchDeleteContactById,
 };
