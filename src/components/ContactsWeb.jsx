@@ -11,7 +11,6 @@ function ContactsWeb() {
   const navigate = useNavigate();
   const [contacts, setContacts] = useState([]);
   const { setUserToken } = useContext(ContactsContext);
-  // const [theToken, setTheToken] = useState({});
   const link = '/';
 
   const navigateToCreateUser = () => {
@@ -80,42 +79,32 @@ function ContactsWeb() {
             <tr key={ user.id }>
               <td
                 className="text-center"
-                data-testid={
-                  `user__element-user-table-item-id-${index}`
-                }
+                data-testid={ `${index}-item-user-id` }
               >
                 { user.id }
               </td>
               <td
                 className="text-center"
-                data-testid={
-                  `user__element-user-table-item-name-${index}`
-                }
+                data-testid={ `${index}-item-user-name` }
               >
                 { user.name }
               </td>
               <td
                 className="text-center"
-                data-testid={
-                  `user__element-user-table-item-mobile-${index}`
-                }
+                data-testid={ `${index}-item-user-mobile` }
               >
                 { user.mobile }
               </td>
               <td
                 className="text-center"
-                data-testid={
-                  `user__element-user-table-item-email-${index}`
-                }
+                data-testid={ `${index}-item-user-email` }
               >
                 { user.email }
               </td>
               <td
                 className="text-center"
                 key={ user.id }
-                data-testid={
-                  `user__element-user-table-item-action-${index}`
-                }
+                data-testid={ `${index}-item-user-buttons` }
               >
                 <Link to={ `/update/${user.id}` }>
                   <img src={ Edit } alt="botão que direciona para a página que edita os dados do usuário"/>

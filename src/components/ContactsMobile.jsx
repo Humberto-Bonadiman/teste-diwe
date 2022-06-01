@@ -46,6 +46,8 @@ function ContactsMobile() {
     <img src={Mobile} alt="pequeno smartphone" />
   );
 
+  const deleteAlert = () => true;
+
   return (
     <div>
       <Header text={ text } link={ link } />
@@ -59,18 +61,24 @@ function ContactsMobile() {
       </button>
       <p>{`Total: ${numberContacs} usuários`}</p>
       <Link to='/contacts'>Ver todos</Link>
-      { contacts.map((contact) => (
+      { contacts.map((contact, index) => (
         <div className="card">
           <div className="card-left">
-            <p>{contact.name}</p>
-            <p>{contact.email}</p>
-            <p>{`${imageMobile} ${numberMobile(contact.mobile)}`}</p>
+            <p
+              data-testid={ `${index}-item-user-name` }
+            >{contact.name}</p>
+            <p
+              data-testid={ `${index}-item-user-email` }
+            >{contact.email}</p>
+            <p
+              data-testid={ `${index}-item-user-mobile` }
+            >{imageMobile}{numberMobile(contact.mobile)}</p>
           </div>
-          <div className="card-right">
+          <div data-testid={ `${index}-item-user-buttons` } className="card-right">
             <Link to={ `/update/${contact.id}` }>
               Editar
             </Link>
-            <button type="button">
+            <button type="button" onClick={ deleteAlert }>
               <img src={ Delete } alt="botão para excluir usuário"/>
             </button>
           </div>

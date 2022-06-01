@@ -6,10 +6,16 @@ import LeftSide from '../images/arrow-left.svg';
 function Header({ link }) {
   return (
     <header>
-      <Link to={ link }>
-        <img src={ LeftSide } alt="botão para voltar para a página anterior"/>
+      <Link to={ link } onClick={ () => localStorage.removeItem('user') }>
+        <img
+          data-testid="left-side-image"
+          src={ LeftSide }
+          alt="botão para voltar para a página anterior"
+        />
       </Link>
-      <p>Voltar</p>
+      <p
+        data-testid="text-header"
+      >Voltar</p>
     </header>
   );
 };
