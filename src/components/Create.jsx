@@ -84,8 +84,8 @@ function Create() {
         <br/>
         <button
           type="button"
-          data-testid="login-submit-btn"
-          className="login-submit-btn"
+          data-testid="create-contact-btn"
+          className="create-contact-btn"
           onClick={ handleClick }
         >
           Cadastrar contato

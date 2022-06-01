@@ -49,8 +49,12 @@ function ContactsMobile() {
     <img src={Mobile} alt="pequeno smartphone" />
   );
 
-  const checkImage = (
-    <img src={Check} alt="imagem de check" />
+  const alertCreateMessage = (
+    <Alert
+      data-testid="create-alert-message"
+    >
+      <img src={Check} alt="imagem de check" /> Contato cadastrado com sucesso!
+    </Alert>
   )
 
   const deleteAlert = () => true;
@@ -58,7 +62,7 @@ function ContactsMobile() {
   return (
     <div>
       { !check && <Header text={ text } link={ link } />}
-      { check && <Alert>{checkImage} Contato cadastrado com sucesso!</Alert>}
+      { check && alertCreateMessage}
       <button
         type="button"
         data-testid="redirect-button"
