@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import HeaderWeb from './HeaderWeb';
 import fetch from '../services/fetchApi';
+import ContactsContext from '../context/ContactsContext';
 
 function Create() {
   const [isGreaterThan600px, setIsGreaterThan600px] = useState(false);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [mobile, setMobile] = useState('');
+  const { setCheck } = useContext(ContactsContext);
   const navigate = useNavigate();
   const text = 'Cadastrar um novo contato';
   const link = '/contacts';
@@ -19,6 +21,7 @@ function Create() {
     const OK = 200;
     if (result.status === OK) {
       await result.json();
+      setCheck(true);
       navigate('/contacts');
     }
   }
@@ -85,7 +88,7 @@ function Create() {
           className="login-submit-btn"
           onClick={ handleClick }
         >
-          Fazer login
+          Cadastrar contato
         </button>
       </form>
     </div>

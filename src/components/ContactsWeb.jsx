@@ -10,7 +10,7 @@ import fetch from '../services/fetchApi';
 function ContactsWeb() {
   const navigate = useNavigate();
   const [contacts, setContacts] = useState([]);
-  const { setUserToken } = useContext(ContactsContext);
+  const { setUserToken, setCheck } = useContext(ContactsContext);
   const link = '/';
 
   const navigateToCreateUser = () => {
@@ -30,6 +30,7 @@ function ContactsWeb() {
       setUserToken({ token, type });
       getAllContacts(token);
     };
+    setTimeout(() => { setCheck(false) }, 5000);
   }, []);
 
   return (
