@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ContactsContext from './ContactsContext';
 
 function ContactsProvider({ children }) {
+  const [check, setCheck] = useState(false);
   const [userToken, setUserToken] = useState({
     token: '',
     type: ''
@@ -10,7 +11,9 @@ function ContactsProvider({ children }) {
   const context = React.useMemo(() => ({
     userToken,
     setUserToken,
-  }), []);
+    check,
+    setCheck,
+  }), [check, setCheck, userToken, setUserToken]);
 
   return (
     <ContactsContext.Provider value={ context }>
