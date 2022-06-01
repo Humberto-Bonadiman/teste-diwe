@@ -30,6 +30,12 @@ describe('Testar a página de login', () => {
     cy.get('.alert').should('not.exist');
     cy.get('[data-testid="login-submit-btn"]').click();
     cy.get('.alert').should('have.text', 'Email ou senha incorretos');
+    cy.get('[data-testid="email-input"]').clear();
+    cy.get('[data-testid="password-input"]').clear();
+    cy.get('[data-testid="email-input"]').type('user@diwe.com.br');
+    cy.get('[data-testid="password-input"]').type('Mob20we23##');
+    cy.get('[data-testid="login-submit-btn"]').click();
+    cy.url().should('include', 'http://localhost:3000/contacts');
   });
 
   it('Verificar se a página web contém os dados corretos', () => {
@@ -43,5 +49,11 @@ describe('Testar a página de login', () => {
     cy.get('.alert').should('not.exist');
     cy.get('[data-testid="login-submit-btn"]').click();
     cy.get('.alert').should('have.text', 'Email ou senha incorretos');
+    cy.get('[data-testid="email-input"]').clear();
+    cy.get('[data-testid="password-input"]').clear();
+    cy.get('[data-testid="email-input"]').type('user@diwe.com.br');
+    cy.get('[data-testid="password-input"]').type('Mob20we23##');
+    cy.get('[data-testid="login-submit-btn"]').click();
+    cy.url().should('include', 'http://localhost:3000/contacts');
   });
 });

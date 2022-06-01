@@ -83,7 +83,7 @@ Faça login para acessar nossa plataforma
 
 ## Listagem dos contatos
 
-### 9 - Criar um header fixo que mostre que indique a página que a pessoa se encontra e com link com a opção para voltar a página anterior
+### 9 - Criar um header fixo que indique a página que a pessoa se encontra e com link contendo a opção para voltar a página anterior
 
 ### 10 - Adicionar um botão para cadastrar usuário com o texto **Cadastrar Contato**
 

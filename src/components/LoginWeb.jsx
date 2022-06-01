@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
-import fetchPostLogin from '../services/fetchApi';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import fetch from '../services/fetchApi';
 import Computer from '../images/Login.png';
+import ContactsContext from '../context/ContactsContext';
 
 function LoginWeb() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const { setUserToken } = useContext(ContactsContext);
+  const navigate = useNavigate();
   const MIN_LENGTH = 6;
 
   const isEmailValid = (userEmail) => {
@@ -15,15 +19,19 @@ function LoginWeb() {
 
   const handleClick = async (event) => {
     event.preventDefault();
-    const result = await fetchPostLogin(email, password);
+    const result = await fetch.fetchPostLogin(email, password);
     const ERROR = 400;
+    const OK = 200;
     if (result.status === ERROR) {
       setError(true);
       setTimeout(() => { setError(false) }, 5000);
-    } else {
+    }
+    if (result.status === OK) {
       const body = await result.json();
-      console.log(body);
-      localStorage.setItem('user', JSON.stringify(body));
+      const { token, type } = body;
+      setUserToken({ token, type });
+      localStorage.setItem('user', JSON.stringify({ token, type }));
+      navigate('/contacts');
     }
   };
 

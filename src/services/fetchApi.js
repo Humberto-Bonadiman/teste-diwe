@@ -1,10 +1,12 @@
-// const appJson = 'application/json';
-// const credentials = btoa('EMAIL:PASSWORD');
-// const auth = { "Authorization" : `Basic ${credentials}` };
+const appJson = 'application/json';
 
 const fetchPostLogin = async (email, password) => {
-  const fecthLogin = fetch('https://contacts-api.prd.parceirodaconstrucao.com.br/auth/login/', {
+  const fecthLogin = fetch('https://contacts-api.prd.parceirodaconstrucao.com.br/auth/login', {
     method: 'POST',
+    headers: {
+      Accept: appJson,
+      'Content-Type': appJson,
+    },
     body: JSON.stringify({
       email,
       password,
@@ -14,17 +16,86 @@ const fetchPostLogin = async (email, password) => {
   return response;
 };
 
-/* const fetchPostLogin = async (email, password) => {
-  const fecthLogin = fetch('https://contacts-api.prd.parceirodaconstrucao.com.br/auth/login', {
+const fetchGetAllContacts = async (token) => {
+  const fetchContacts = fetch('https://contacts-api.prd.parceirodaconstrucao.com.br/contacts', {
+    method: 'GET',
+    headers: {
+      Accept: appJson,
+      'Content-Type': appJson,
+      'Authorization': `Bearer ${token}`,
+    }
+  });
+  const response = await fetchContacts;
+  return response;
+};
+
+const fetchGetContactById = async (id, token) => {
+  const fetchContacts = fetch(`https://contacts-api.prd.parceirodaconstrucao.com.br/contacts${id}`, {
+    method: 'GET',
+    headers: {
+      Accept: appJson,
+      'Content-Type': appJson,
+      'Authorization': `Bearer ${token}`,
+    }
+  });
+  const response = await fetchContacts;
+  return response;
+};
+
+const fetchCreateContact = async (token, name, email, mobile) => {
+  const fetchContacts = fetch('https://contacts-api.prd.parceirodaconstrucao.com.br/contacts', {
     method: 'POST',
-    headers: {Authentication: 'Bearer Token'},
+    headers: {
+      Accept: appJson,
+      'Content-Type': appJson,
+      'Authorization': `Bearer ${token}`,
+    },
     body: JSON.stringify({
+      name,
       email,
-      password,
+      mobile,
     }),
   });
-  const response = await fecthLogin;
+  const response = await fetchContacts;
   return response;
-}; */
+};
 
-export default fetchPostLogin;
+const fetchUpdateContactById = async (id, token, name, email, mobile) => {
+  const fetchContacts = fetch(`https://contacts-api.prd.parceirodaconstrucao.com.br/contacts${id}`, {
+    method: 'PUT',
+    headers: {
+      Accept: appJson,
+      'Content-Type': appJson,
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      email,
+      mobile,
+    }),
+  });
+  const response = await fetchContacts;
+  return response;
+};
+
+const fetchDeleteContactById = async (id, token) => {
+  const fetchContacts = fetch(`https://contacts-api.prd.parceirodaconstrucao.com.br/contacts${id}`, {
+    method: 'DELETE',
+    headers: {
+      Accept: appJson,
+      'Content-Type': appJson,
+      'Authorization': `Bearer ${token}`,
+    }
+  });
+  const response = await fetchContacts;
+  return response;
+};
+
+export default {
+  fetchPostLogin,
+  fetchGetAllContacts,
+  fetchGetContactById,
+  fetchCreateContact,
+  fetchUpdateContactById,
+  fetchDeleteContactById,
+};

@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React from 'react';
 import { Link } from "react-router-dom";
-import LeftSide from '../images/chevron-left.svg';
+import LeftSide from '../images/arrow-left.svg';
 
-function Header({ text, link }) {
+function Header({ link }) {
   return (
     <header>
       <Link to={ link } onClick={ () => localStorage.removeItem('user') }>
@@ -15,13 +15,12 @@ function Header({ text, link }) {
       </Link>
       <p
         data-testid="text-header"
-      >{ text }</p>
+      >Voltar</p>
     </header>
   );
 };
 
 Header.propTypes = {
-  text: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired
 }
 
