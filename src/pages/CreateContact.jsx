@@ -1,8 +1,9 @@
 import React from 'react';
+import Create from '../components/Create';
 
 function CreateContact() {
   return (
-    <div>CreateContact</div>
+    <div><Create /></div>
   );
 };
 
