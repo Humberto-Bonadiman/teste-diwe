@@ -56,6 +56,18 @@ Após cada um dos passos, haverá um exemplo do comando a ser digitado para faze
 }
 ```
 
+---
+
+## Teste
+
+### Para testar a aplicação utilize o comando abaixo no terminal
+
+```javascript
+  npm run cypress:open
+```
+
+---
+
 ## Requisitos do projeto
 
 ## Login
