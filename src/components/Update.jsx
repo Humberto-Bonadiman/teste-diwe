@@ -1,30 +1,37 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import HeaderWeb from './HeaderWeb';
 import fetch from '../services/fetchApi';
 import ContactsContext from '../context/ContactsContext';
 
-function Create() {
+function Update() {
+  const { id } = useParams();
+  const {contact, setContact, userToken } = useContext(ContactsContext);
   const [isGreaterThan600px, setIsGreaterThan600px] = useState(false);
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [mobile, setMobile] = useState('');
-  const { setCheck } = useContext(ContactsContext);
+  const [contactEmail, setEmail] = useState(contact.email);
+  const [contactName, setName] = useState(contact.name);
+  const [contactMobile, setMobile] = useState(contact.mobile);
   const navigate = useNavigate();
   const text = 'Cadastrar um novo contato';
   const link = '/contacts';
 
   const handleClick = async () => {
-    const { token } = JSON.parse(localStorage.getItem('token'));
-    const result = await fetch.fetchCreateContact(token, name, email, mobile);
+    const result = await fetch.fetchUpdateContactById(
+      id,
+      userToken.token,
+      contactName,
+      contactEmail,
+      contactMobile
+    );
     const OK = 200;
     if (result.status === OK) {
       await result.json();
-      setCheck(true);
+      setContact({ contactEmail, contactName, contactMobile })
       navigate('/contacts');
-    }
-  }
+    };
+  };
 
   useEffect(() => {
     function handleResize() {
@@ -39,6 +46,12 @@ function Create() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    setName(contact.name);
+    setEmail(contact.email);
+    setMobile(contact.mobile);
+  }, [id, setContact, contact]);
+
   return (
     <div>
       { !isGreaterThan600px && <Header text={ text } link={ link } /> }
@@ -52,9 +65,10 @@ function Create() {
           <input
             type="text"
             id="name"
-            data-testid="name-input-create"
+            value={ contactName }
+            data-testid="name-input-update"
             placeholder="Digite seu name"
-            onChange={ (e) => setName(e.target.value) }
+            onChange={ ({ target }) => setName(target.value) }
           />
         </label>
         <br/>
@@ -64,9 +78,10 @@ function Create() {
           <input
             type="text"
             id="email"
-            data-testid="email-input-create"
+            value={ contactEmail }
+            data-testid="email-input-update"
             placeholder="Digite seu email"
-            onChange={ (e) => setEmail(e.target.value) }
+            onChange={ ({ target }) => setEmail(target.value) }
           />
         </label>
         <br/>
@@ -76,23 +91,24 @@ function Create() {
           <input
             type="text"
             id="mobile"
-            data-testid="mobile-input"
+            value={ contactMobile }
+            data-testid="mobile-input-update"
             placeholder="Digite seu mobile"
-            onChange={ (e) => setMobile(e.target.value) }
+            onChange={ ({ target }) => setMobile(target.value) }
           />
         </label>
         <br/>
         <button
           type="button"
-          data-testid="create-contact-btn"
-          className="create-contact-btn"
+          data-testid="update-submit-btn"
+          className="update-submit-btn"
           onClick={ handleClick }
         >
-          Cadastrar contato
+          Salvar Alterações
         </button>
       </form>
     </div>
   );
 };
 
-export default Create;
+export default Update;

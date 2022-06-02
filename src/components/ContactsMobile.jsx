@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert';
 import ContactsContext from '../context/ContactsContext';
+import DeleteBox from './DeleteBox';
 import Header from './Header';
 import fetch from '../services/fetchApi';
 import Delete from '../images/trash-2.svg';
@@ -11,7 +12,9 @@ import Check from '../images/check.svg';
 function ContactsMobile() {
   const navigate = useNavigate();
   const [contacts, setContacts] = useState([]);
-  const { setUserToken, check, setCheck } = useContext(ContactsContext);
+  const [idNumber, setIdNumber] = useState(0);
+  const [show, setShow] = useState(false);
+  const { userToken, setUserToken, check, setCheck, setContact } = useContext(ContactsContext);
   const text = 'Listagem de usuários';
   const link = '/';
 
@@ -26,7 +29,7 @@ function ContactsMobile() {
   };
 
   useEffect(() => {
-    const dataStorage = JSON.parse(localStorage.getItem('user'));
+    const dataStorage = JSON.parse(localStorage.getItem('token'));
     if (dataStorage) {
       const { token, type } = dataStorage;
       setUserToken({ token, type });
@@ -55,14 +58,30 @@ function ContactsMobile() {
     >
       <img src={Check} alt="imagem de check" /> Contato cadastrado com sucesso!
     </Alert>
-  )
+  );
 
-  const deleteAlert = () => true;
+  const editUser = async (id) => {
+    const result = await fetch.fetchGetContactById(id, userToken.token);
+    const data = await result.json();
+    setContact(data);
+  };
+
+  const deleteAlert = (number) => {
+    setIdNumber(number);
+    setShow(true);
+  };
 
   return (
     <div>
       { !check && <Header text={ text } link={ link } />}
       { check && alertCreateMessage}
+      { show && <DeleteBox
+        show={ show }
+        setShow={ setShow }
+        idNumber={ idNumber }
+        token={ userToken.token }
+        getAllContacts={ getAllContacts }
+      /> }
       <button
         type="button"
         data-testid="redirect-button"
@@ -73,24 +92,24 @@ function ContactsMobile() {
       </button>
       <p>{`Total: ${numberContacs} usuários`}</p>
       <Link to='/contacts'>Ver todos</Link>
-      { contacts.map((contact, index) => (
+      { contacts.map((user, index) => (
         <div className="card">
           <div className="card-left">
             <p
               data-testid={ `${index}-item-user-name` }
-            >{contact.name}</p>
+            >{user.name}</p>
             <p
               data-testid={ `${index}-item-user-email` }
-            >{contact.email}</p>
+            >{user.email}</p>
             <p
               data-testid={ `${index}-item-user-mobile` }
-            >{imageMobile}{numberMobile(contact.mobile)}</p>
+            >{imageMobile}{numberMobile(user.mobile)}</p>
           </div>
           <div data-testid={ `${index}-item-user-buttons` } className="card-right">
-            <Link to={ `/update/${contact.id}` }>
+          <Link to={ `/update/${user.id}` } onClick={ () => editUser(user.id)}>
               Editar
             </Link>
-            <button type="button" onClick={ deleteAlert }>
+            <button type="button" onClick={ () => deleteAlert(user.id) }>
               <img src={ Delete } alt="botão para excluir usuário"/>
             </button>
           </div>

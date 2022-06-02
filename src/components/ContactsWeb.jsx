@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import HeaderWeb from './HeaderWeb';
+import DeleteBox from './DeleteBox';
 import Edit from '../images/edit.svg';
 import Delete from '../images/trash-2.svg';
 import Down from '../images/down-icon.png';
@@ -9,8 +10,10 @@ import fetch from '../services/fetchApi';
 
 function ContactsWeb() {
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
   const [contacts, setContacts] = useState([]);
-  const { setUserToken, setCheck } = useContext(ContactsContext);
+  const [idNumber, setIdNumber] = useState(0);
+  const { userToken, setUserToken, setCheck, setContact } = useContext(ContactsContext);
   const link = '/';
 
   const navigateToCreateUser = () => {
@@ -24,7 +27,7 @@ function ContactsWeb() {
   };
 
   useEffect(() => {
-    const dataStorage = JSON.parse(localStorage.getItem('user'));
+    const dataStorage = JSON.parse(localStorage.getItem('token'));
     if (dataStorage) {
       const { token, type } = dataStorage;
       setUserToken({ token, type });
@@ -33,8 +36,26 @@ function ContactsWeb() {
     setTimeout(() => { setCheck(false) }, 5000);
   }, []);
 
+  const editUser = async (id) => {
+    const result = await fetch.fetchGetContactById(id, userToken.token);
+    const data = await result.json();
+    setContact(data);
+  };
+
+  const deleteAlert = (number) => {
+    setIdNumber(number);
+    setShow(true);
+  };
+
   return (
     <div>
+      { show && <DeleteBox
+        show={ show }
+        setShow={ setShow }
+        idNumber={ idNumber }
+        token={ userToken.token }
+        getAllContacts={ getAllContacts }
+      /> }
       <HeaderWeb link={ link } />
       <h3>Listagem de contatos</h3>
       <button
@@ -107,11 +128,11 @@ function ContactsWeb() {
                 key={ user.id }
                 data-testid={ `${index}-item-user-buttons` }
               >
-                <Link to={ `/update/${user.id}` }>
+                <Link to={ `/update/${user.id}` } onClick={ () => editUser(user.id)}>
                   <img src={ Edit } alt="botão que direciona para a página que edita os dados do usuário"/>
                   Editar
                 </Link>
-                <button type="button">
+                <button type="button" onClick={ () => deleteAlert(user.id) }>
                   <img src={ Delete } alt="botão para excluir usuário"/>
                   Excluir
                 </button>
