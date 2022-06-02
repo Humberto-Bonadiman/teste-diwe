@@ -50,8 +50,10 @@ Após cada um dos passos, haverá um exemplo do comando a ser digitado para faze
 
 ### Para fazer login utilize o email e senha disponibilizados abaixo
 ```javascript
+{
   "email": "user@diwe.com.br",
   "password": "Mob20we23##"
+}
 ```
 
 ## Requisitos do projeto
