@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert';
 import ContactsContext from '../context/ContactsContext';
+import DeleteBox from './DeleteBox';
 import Header from './Header';
 import fetch from '../services/fetchApi';
 import Delete from '../images/trash-2.svg';
@@ -33,7 +34,8 @@ function ContactsMobile() {
       getAllContacts(token);
     };
     setTimeout(() => { setCheck(false) }, 5000);
-  }, []);
+  }, [contacts, setContacts]);
+  console.log(contacts);
 
   const numberContacs = contacts.length;
 
@@ -69,6 +71,7 @@ function ContactsMobile() {
     <div>
       { !check && <Header text={ text } link={ link } />}
       { check && alertCreateMessage}
+      <DeleteBox />
       <button
         type="button"
         data-testid="redirect-button"

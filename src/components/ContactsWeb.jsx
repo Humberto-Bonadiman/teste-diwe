@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import HeaderWeb from './HeaderWeb';
+import DeleteBox from './DeleteBox';
 import Edit from '../images/edit.svg';
 import Delete from '../images/trash-2.svg';
 import Down from '../images/down-icon.png';
@@ -9,7 +10,9 @@ import fetch from '../services/fetchApi';
 
 function ContactsWeb() {
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
   const [contacts, setContacts] = useState([]);
+  const [idNumber, setIdNumber] = useState(0);
   const { userToken, setUserToken, setCheck, setContact } = useContext(ContactsContext);
   const link = '/';
 
@@ -39,8 +42,20 @@ function ContactsWeb() {
     setContact(data);
   };
 
+  const deleteAlert = (number) => {
+    setIdNumber(number);
+    setShow(true);
+  };
+
   return (
     <div>
+      { show && <DeleteBox
+        show={ show }
+        setShow={ setShow }
+        idNumber={ idNumber }
+        token={ userToken.token }
+        getAllContacts={ getAllContacts }
+      /> }
       <HeaderWeb link={ link } />
       <h3>Listagem de contatos</h3>
       <button
@@ -117,7 +132,7 @@ function ContactsWeb() {
                   <img src={ Edit } alt="botão que direciona para a página que edita os dados do usuário"/>
                   Editar
                 </Link>
-                <button type="button">
+                <button type="button" onClick={ () => deleteAlert(user.id) }>
                   <img src={ Delete } alt="botão para excluir usuário"/>
                   Excluir
                 </button>

@@ -78,8 +78,8 @@ const fetchUpdateContactById = async (id, token, name, email, mobile) => {
   return response;
 };
 
-const fetchDeleteContactById = async (id, token) => {
-  const fetchContacts = fetch(`https://contacts-api.prd.parceirodaconstrucao.com.br/contacts/${id}`, {
+const fetchDeleteContactById = async (idNumber, token) => {
+  const fetchContacts = fetch(`https://contacts-api.prd.parceirodaconstrucao.com.br/contacts/${idNumber}`, {
     method: 'DELETE',
     headers: {
       Accept: appJson,
