@@ -22,7 +22,7 @@ function Login() {
   }, []);
 
   return (
-    <div>
+    <div className="login">
       { !isGreaterThan600px && <StartLogin /> }
       { isGreaterThan600px && <LoginWeb /> }
     </div>

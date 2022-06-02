@@ -41,24 +41,27 @@ function StartLogin() {
   };
 
   const firstVision = (
-    <div>
+    <div className="container-mobile-first">
       <img
         data-testid="image-login"
-        src={ Computer }
+        src={Computer}
+        className="image-login"
         alt="Imagem com pessoa utilizando o computador"
       />
-      <p className="welcome-text">Bem-vindo! É hora de começar uma nova experiência</p>
-      <p className="before-login">
-        Para ter acesso a todas as funcionalidades que podemos oferecer, faça
-        login ou crie uma nova conta.
-      </p>
-      <button
-        type="button"
-        className="button-start"
-        onClick={ () => setStart(false) }
-      >
-        Começar
-      </button>
+      <div className="welcome-box">
+        <h2 className="welcome-text">Bem-vindo! É hora de começar uma nova experiência</h2>
+        <p className="before-login">
+          Para ter acesso a todas as funcionalidades que podemos oferecer, faça
+          login ou crie uma nova conta.
+        </p>
+        <button
+          type="button"
+          className="button-start"
+          onClick={() => setStart(false)}
+        >
+          Começar
+        </button>
+      </div>
     </div>
   );
 
@@ -67,54 +70,61 @@ function StartLogin() {
   );
 
   const secondVision = (
-    <div>
-      <Header text={ text } link={ link } />
-      <p className="welcome">Bem-vindo(a)!</p>
-      <p className="make-login-text">Faça login para acessar nossa plataforma</p>
-      <form>
-        <label htmlFor="email">
-          Email
-          <br/>
-          <input
-            type="text"
-            id="email"
-            data-testid="email-input"
-            placeholder="Digite seu email"
-            onChange={ (e) => setEmail(e.target.value) }
-          />
-        </label>
-        <br/>
-        <label htmlFor="password">
-          Senha
-          <br/>
-          <input
-            type="password"
-            id="password"
-            data-testid="password-input"
-            placeholder="Digite sua senha"
-            className="password-input"
-            onChange={ (e) => setPassword(e.target.value) }
-          />
-        </label>
-        <br/>
-        { error && alert }
-        <button
-          type="button"
-          data-testid="login-submit-btn"
-          className="login-submit-btn"
-          onClick={ handleClick }
-          disabled={ !(isEmailValid(email) && password.length >= MIN_LENGTH) }
-        >
-          Entrar
-        </button>
-      </form>
+    <div div className="container-mobile">
+      <Header text={text} link={link} />
+      <div className="box-mobile">
+        <div className="box-text">
+          <p className="welcome-mobile">Bem-vindo(a)!</p>
+          <p className="make-login-text">Faça login para acessar nossa plataforma</p>
+        </div>
+        <form className="form-login">
+          <div className="div-inputs">
+            <label className="label-email" htmlFor="email">
+              Email
+              <br />
+              <input
+                type="text"
+                id="email"
+                data-testid="email-input"
+                placeholder="Digite seu email"
+                className="email-input-mobile"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+            <br />
+            <label className="label-password" htmlFor="password">
+              Senha
+              <br />
+              <input
+                type="password"
+                id="password"
+                data-testid="password-input"
+                placeholder="Digite sua senha"
+                className="password-input-mobile"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+            <br />
+            {error && alert}
+          </div>
+          <button
+            type="button"
+            data-testid="login-submit-btn"
+            className="login-submit-btn-mobile"
+            onClick={handleClick}
+            disabled={!(isEmailValid(email) && password.length >= MIN_LENGTH)}
+          >
+            Entrar
+          </button>
+        </form>
+      </div>
     </div>
   );
 
   return (
     <>
-      { start && firstVision }
-      { !start && secondVision }
+      {start && firstVision}
+      {!start && secondVision}
     </>
   );
 }

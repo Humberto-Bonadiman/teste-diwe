@@ -21,7 +21,9 @@ function Header({ text, link }) {
       </Link>
       <p
         data-testid="text-header"
+        className="text-header"
       >{ text }</p>
+      <p>  </p>
     </header>
   );
 };

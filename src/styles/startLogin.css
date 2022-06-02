@@ -1,0 +1,168 @@
+.container-mobile-first {
+  align-items: center;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.image-login {
+  width: 77%;
+}
+
+.welcome-box {
+  align-items: center;
+  align-content: space-around;
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  justify-content: space-evenly;
+}
+
+.welcome-text {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: #142B5D;
+}
+
+.before-login {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 148%;
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: #757575;
+}
+
+.button-start {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 24px;
+  gap: 10px;
+  background: #142B5D;
+  border-radius: 8px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 148%;
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: #F1F1F1;
+  width: 89%;
+}
+
+.container-mobile {
+  height: 100%;
+}
+
+header {
+  border-bottom: 1px solid #EEEEEE;
+  display: flex;
+  padding: 5%;
+  justify-content: space-between;
+}
+
+.text-header {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 148%;
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: #244677;
+}
+
+header > img {
+  border: 2px solid #000000;
+}
+
+.box-mobile {
+  align-items: center;
+  justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  height: 89%;
+}
+
+.welcome-mobile {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: #244677;
+}
+
+.box-text {
+  margin-top: 10%;
+}
+
+.make-login-text {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 148%;
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: #757575;
+}
+
+.form-login {
+  align-items: center;
+  justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 90%;
+}
+
+.div-inputs {
+  width: 100%;
+}
+
+.email-input-mobile {
+  margin-bottom: 10%;
+}
+
+.email-input-mobile, .password-input-mobile  {
+  background: #F1F3F5;
+  align-items: center;
+  border-radius: 8px;
+  padding: 16px;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box
+}
+
+.label-email, .label-password {
+  width: 100%;
+}
+
+.login-submit-btn-mobile {
+  background-color: #12295B;
+  border-radius: 8px;
+  color: #FFFFFF;
+  padding: 16px;
+  width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+  .container-mobile {
+    display: none;
+  }
+}
