@@ -66,7 +66,7 @@ function Update() {
             type="text"
             id="name"
             value={ contactName }
-            data-testid="name-input-create"
+            data-testid="name-input-update"
             placeholder="Digite seu name"
             onChange={ ({ target }) => setName(target.value) }
           />
@@ -79,7 +79,7 @@ function Update() {
             type="text"
             id="email"
             value={ contactEmail }
-            data-testid="email-input-create"
+            data-testid="email-input-update"
             placeholder="Digite seu email"
             onChange={ ({ target }) => setEmail(target.value) }
           />
@@ -92,7 +92,7 @@ function Update() {
             type="text"
             id="mobile"
             value={ contactMobile }
-            data-testid="mobile-input"
+            data-testid="mobile-input-update"
             placeholder="Digite seu mobile"
             onChange={ ({ target }) => setMobile(target.value) }
           />
@@ -100,8 +100,8 @@ function Update() {
         <br/>
         <button
           type="button"
-          data-testid="login-submit-btn"
-          className="login-submit-btn"
+          data-testid="update-submit-btn"
+          className="update-submit-btn"
           onClick={ handleClick }
         >
           Salvar Alterações

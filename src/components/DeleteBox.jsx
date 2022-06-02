@@ -9,9 +9,7 @@ function DeleteBox({ show, setShow, idNumber, token, getAllContacts }) {
   const handleClose = () => setShow(false);
 
   const deleteAndClose = async () => {
-    console.log(idNumber, token);
     const result = await fetch.fetchDeleteContactById(idNumber, token);
-    console.log(result);
     await JSON.parse(JSON.stringify(result));
     getAllContacts(token);
     setShow(false);

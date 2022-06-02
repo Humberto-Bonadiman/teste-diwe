@@ -12,6 +12,8 @@ import Check from '../images/check.svg';
 function ContactsMobile() {
   const navigate = useNavigate();
   const [contacts, setContacts] = useState([]);
+  const [idNumber, setIdNumber] = useState(0);
+  const [show, setShow] = useState(false);
   const { userToken, setUserToken, check, setCheck, setContact } = useContext(ContactsContext);
   const text = 'Listagem de usuários';
   const link = '/';
@@ -34,8 +36,7 @@ function ContactsMobile() {
       getAllContacts(token);
     };
     setTimeout(() => { setCheck(false) }, 5000);
-  }, [contacts, setContacts]);
-  console.log(contacts);
+  }, []);
 
   const numberContacs = contacts.length;
 
@@ -57,9 +58,7 @@ function ContactsMobile() {
     >
       <img src={Check} alt="imagem de check" /> Contato cadastrado com sucesso!
     </Alert>
-  )
-
-  const deleteAlert = () => true;
+  );
 
   const editUser = async (id) => {
     const result = await fetch.fetchGetContactById(id, userToken.token);
@@ -67,11 +66,22 @@ function ContactsMobile() {
     setContact(data);
   };
 
+  const deleteAlert = (number) => {
+    setIdNumber(number);
+    setShow(true);
+  };
+
   return (
     <div>
       { !check && <Header text={ text } link={ link } />}
       { check && alertCreateMessage}
-      <DeleteBox />
+      { show && <DeleteBox
+        show={ show }
+        setShow={ setShow }
+        idNumber={ idNumber }
+        token={ userToken.token }
+        getAllContacts={ getAllContacts }
+      /> }
       <button
         type="button"
         data-testid="redirect-button"
@@ -99,7 +109,7 @@ function ContactsMobile() {
           <Link to={ `/update/${user.id}` } onClick={ () => editUser(user.id)}>
               Editar
             </Link>
-            <button type="button" onClick={ deleteAlert }>
+            <button type="button" onClick={ () => deleteAlert(user.id) }>
               <img src={ Delete } alt="botão para excluir usuário"/>
             </button>
           </div>
