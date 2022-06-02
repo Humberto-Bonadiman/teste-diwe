@@ -4,6 +4,7 @@ import ContactsContext from './ContactsContext';
 
 function ContactsProvider({ children }) {
   const [check, setCheck] = useState(false);
+  const [contact, setContact] = useState({});
   const [userToken, setUserToken] = useState({
     token: '',
     type: ''
@@ -13,7 +14,9 @@ function ContactsProvider({ children }) {
     setUserToken,
     check,
     setCheck,
-  }), [check, setCheck, userToken, setUserToken]);
+    contact,
+    setContact
+  }), [check, setCheck, userToken, setUserToken, contact, setContact]);
 
   return (
     <ContactsContext.Provider value={ context }>

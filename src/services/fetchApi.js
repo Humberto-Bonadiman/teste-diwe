@@ -30,7 +30,7 @@ const fetchGetAllContacts = async (token) => {
 };
 
 const fetchGetContactById = async (id, token) => {
-  const fetchContacts = fetch(`https://contacts-api.prd.parceirodaconstrucao.com.br/contacts${id}`, {
+  const fetchContacts = fetch(`https://contacts-api.prd.parceirodaconstrucao.com.br/contacts/${id}`, {
     method: 'GET',
     headers: {
       Accept: appJson,
@@ -61,7 +61,7 @@ const fetchCreateContact = async (token, name, email, mobile) => {
 };
 
 const fetchUpdateContactById = async (id, token, name, email, mobile) => {
-  const fetchContacts = fetch(`https://contacts-api.prd.parceirodaconstrucao.com.br/contacts${id}`, {
+  const fetchContacts = fetch(`https://contacts-api.prd.parceirodaconstrucao.com.br/contacts/${id}`, {
     method: 'PUT',
     headers: {
       Accept: appJson,
@@ -79,7 +79,7 @@ const fetchUpdateContactById = async (id, token, name, email, mobile) => {
 };
 
 const fetchDeleteContactById = async (id, token) => {
-  const fetchContacts = fetch(`https://contacts-api.prd.parceirodaconstrucao.com.br/contacts${id}`, {
+  const fetchContacts = fetch(`https://contacts-api.prd.parceirodaconstrucao.com.br/contacts/${id}`, {
     method: 'DELETE',
     headers: {
       Accept: appJson,

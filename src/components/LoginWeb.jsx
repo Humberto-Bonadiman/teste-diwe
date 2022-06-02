@@ -30,7 +30,7 @@ function LoginWeb() {
       const body = await result.json();
       const { token, type } = body;
       setUserToken({ token, type });
-      localStorage.setItem('user', JSON.stringify({ token, type }));
+      localStorage.setItem('token', JSON.stringify({ token, type }));
       navigate('/contacts');
     }
   };

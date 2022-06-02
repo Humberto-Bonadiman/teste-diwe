@@ -4,9 +4,15 @@ import { Link } from "react-router-dom";
 import LeftSide from '../images/chevron-left.svg';
 
 function Header({ text, link }) {
+  const onClick = () => {
+    if (link === '/') {
+      localStorage.removeItem('token')
+    }
+  };
+  
   return (
     <header>
-      <Link to={ link } onClick={ () => localStorage.removeItem('user') }>
+      <Link to={ link } onClick={ () => onClick() }>
         <img
           data-testid="left-side-image"
           src={ LeftSide }

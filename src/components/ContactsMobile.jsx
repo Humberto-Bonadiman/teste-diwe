@@ -11,7 +11,7 @@ import Check from '../images/check.svg';
 function ContactsMobile() {
   const navigate = useNavigate();
   const [contacts, setContacts] = useState([]);
-  const { setUserToken, check, setCheck } = useContext(ContactsContext);
+  const { userToken, setUserToken, check, setCheck, setContact } = useContext(ContactsContext);
   const text = 'Listagem de usuários';
   const link = '/';
 
@@ -26,7 +26,7 @@ function ContactsMobile() {
   };
 
   useEffect(() => {
-    const dataStorage = JSON.parse(localStorage.getItem('user'));
+    const dataStorage = JSON.parse(localStorage.getItem('token'));
     if (dataStorage) {
       const { token, type } = dataStorage;
       setUserToken({ token, type });
@@ -59,6 +59,12 @@ function ContactsMobile() {
 
   const deleteAlert = () => true;
 
+  const editUser = async (id) => {
+    const result = await fetch.fetchGetContactById(id, userToken.token);
+    const data = await result.json();
+    setContact(data);
+  };
+
   return (
     <div>
       { !check && <Header text={ text } link={ link } />}
@@ -73,21 +79,21 @@ function ContactsMobile() {
       </button>
       <p>{`Total: ${numberContacs} usuários`}</p>
       <Link to='/contacts'>Ver todos</Link>
-      { contacts.map((contact, index) => (
+      { contacts.map((user, index) => (
         <div className="card">
           <div className="card-left">
             <p
               data-testid={ `${index}-item-user-name` }
-            >{contact.name}</p>
+            >{user.name}</p>
             <p
               data-testid={ `${index}-item-user-email` }
-            >{contact.email}</p>
+            >{user.email}</p>
             <p
               data-testid={ `${index}-item-user-mobile` }
-            >{imageMobile}{numberMobile(contact.mobile)}</p>
+            >{imageMobile}{numberMobile(user.mobile)}</p>
           </div>
           <div data-testid={ `${index}-item-user-buttons` } className="card-right">
-            <Link to={ `/update/${contact.id}` }>
+          <Link to={ `/update/${user.id}` } onClick={ () => editUser(user.id)}>
               Editar
             </Link>
             <button type="button" onClick={ deleteAlert }>

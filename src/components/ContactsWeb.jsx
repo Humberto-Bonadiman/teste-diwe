@@ -10,7 +10,7 @@ import fetch from '../services/fetchApi';
 function ContactsWeb() {
   const navigate = useNavigate();
   const [contacts, setContacts] = useState([]);
-  const { setUserToken, setCheck } = useContext(ContactsContext);
+  const { userToken, setUserToken, setCheck, setContact } = useContext(ContactsContext);
   const link = '/';
 
   const navigateToCreateUser = () => {
@@ -24,7 +24,7 @@ function ContactsWeb() {
   };
 
   useEffect(() => {
-    const dataStorage = JSON.parse(localStorage.getItem('user'));
+    const dataStorage = JSON.parse(localStorage.getItem('token'));
     if (dataStorage) {
       const { token, type } = dataStorage;
       setUserToken({ token, type });
@@ -32,6 +32,12 @@ function ContactsWeb() {
     };
     setTimeout(() => { setCheck(false) }, 5000);
   }, []);
+
+  const editUser = async (id) => {
+    const result = await fetch.fetchGetContactById(id, userToken.token);
+    const data = await result.json();
+    setContact(data);
+  };
 
   return (
     <div>
@@ -107,7 +113,7 @@ function ContactsWeb() {
                 key={ user.id }
                 data-testid={ `${index}-item-user-buttons` }
               >
-                <Link to={ `/update/${user.id}` }>
+                <Link to={ `/update/${user.id}` } onClick={ () => editUser(user.id)}>
                   <img src={ Edit } alt="botão que direciona para a página que edita os dados do usuário"/>
                   Editar
                 </Link>
