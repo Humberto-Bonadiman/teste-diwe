@@ -1,5 +1,7 @@
 # Boas vindas ao repositório do projeto Teste Diwe!
 
+![Diwe](diwe.jpeg)
+
 ## Descrição do projeto
 
 O desafio consistiu na criação de uma aplicação web para gerenciamento de uma lista de contatos. Nesta aplicação eu deveria pegar os dados de uma API onde eu poderia visualizar os dados dos contatos, selecionar um contato, criar contato, editar contato e deletar contato.
@@ -43,6 +45,14 @@ Após cada um dos passos, haverá um exemplo do comando a ser digitado para faze
 - [Tipografia - Montserrat](https://fonts.google.com/specimen/Montserrat?query=mont)
 
 ---
+
+## Login
+
+### Para fazer login utilize o email e senha disponibilizados abaixo
+```javascript
+  "email": "user@diwe.com.br",
+  "password": "Mob20we23##"
+```
 
 ## Requisitos do projeto
 
